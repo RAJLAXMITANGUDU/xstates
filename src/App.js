@@ -28,6 +28,19 @@ const App=()=>{
   console.log(selCountry,selState)
   return (
     <div>
+      <div
+      style={{
+        display:"flex",
+        flexDirection:"column",
+        alignItems:"center",
+        padding:"20px",
+      }}
+      >
+        <h1 style={{fontSize:"32px",fontWeight:"bold",marginBottom:"20px"}}>
+          Select Location
+        </h1>
+
+      
     <div>
       <select name="country" id="country" value={selCountry} onChange={(e)=>{setSelCountry(e.target.value);setSelState("");setSelCity("");setStates([]);setCities([]);}}>
       <option>Select Country</option>
@@ -45,12 +58,13 @@ const App=()=>{
      <div style={{marginTop:"20px",fontWeight:"bold"}}>
     {selCity && selState && selCountry ? (
       <p>
-        You selected {selCity},{selState},{selCountry}
+        You selected {selCity}, {selState}, {selCountry}
       </p>
     ):(
       <p>please select a location</p>
     )}
     </div>
+   </div>
    </div>
   );
 };
