@@ -28,11 +28,12 @@ const App=()=>{
   console.log(selCountry,selState)
   return (
     <div>
-      <select name="country" id="country" value={selCountry} onChange={(e)=>{setSelCountry(e.target.value);setSelState("");setSelCity("")}}>
+    <div>
+      <select name="country" id="country" value={selCountry} onChange={(e)=>setSelCountry(e.target.value)}>
       <option>Select Country</option>
         {countries.map((country)=>(<option value={country} key={country}>{country}</option>))}
       </select>
-      <select name="country" id="country" value={selState} onChange={(e)=>{setSelState(e.target.value);setSelCity("")}}>
+      <select name="country" id="country" value={selState} onChange={(e)=>setSelState(e.target.value)}>
         <option>Select State</option>
         {states.map((state)=>(<option value={state} key={state}>{state}</option>))}
       </select>
@@ -41,6 +42,14 @@ const App=()=>{
         {cities.map((city)=>(<option value={city} key={city}>{city}</option>))}
       </select>
     </div>
+     <div style={{marginTop:"20px",fontWeight:"bold"}}>
+    {selCity && selState && selCountry && (
+      <p>
+        You selected {selCity},{selState},{selCountry}
+      </p>
+    )}
+    </div>
+   </div>
   );
 };
 export default App
