@@ -28,11 +28,11 @@ const App=()=>{
   console.log(selCountry,selState)
   return (
     <div>
-      <select name="country" id="country" value={selCountry} onChange={(e)=>setSelCountry(e.target.value)}>
+      <select name="country" id="country" value={selCountry} onChange={(e)=>{setSelCountry(e.target.value);setSelState("");setSelCity("")}}>
       <option>Select Country</option>
         {countries.map((country)=>(<option value={country} key={country}>{country}</option>))}
       </select>
-      <select name="country" id="country" value={selState} onChange={(e)=>setSelState(e.target.value)}>
+      <select name="country" id="country" value={selState} onChange={(e)=>{setSelState(e.target.value);setSelCity("")}}>
         <option>Select State</option>
         {states.map((state)=>(<option value={state} key={state}>{state}</option>))}
       </select>
