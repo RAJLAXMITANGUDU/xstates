@@ -29,15 +29,15 @@ const App=()=>{
   return (
     <div>
     <div>
-      <select name="country" id="country" value={selCountry} onChange={(e)=>{setSelCountry(e.target.value);setSelState("");setSelCity("");setStates([]);setCities([]);}}>
+      <select name="country" id="country" value={selCountry} onChange={(e)=>setSelCountry(e.target.value)}>
       <option>Select Country</option>
         {countries.map((country)=>(<option value={country} key={country}>{country}</option>))}
       </select>
-      <select name="country" id="country" value={selState} onChange={(e)=>{setSelState(e.target.value);setSelCity("");setCities([]);}} disabled={!selCountry}>
+      <select name="country" id="country" value={selState} onChange={(e)=>setSelState(e.target.value)}>
         <option>Select State</option>
         {states.map((state)=>(<option value={state} key={state}>{state}</option>))}
       </select>
-      <select name="country" id="country" value={selCity} onChange={(e)=>setSelCity(e.target.value)} disabled={!selState}>
+      <select name="country" id="country" value={selCity} onChange={(e)=>setSelCity(e.target.value)}>
         <option>Select City</option>
         {cities.map((city)=>(<option value={city} key={city}>{city}</option>))}
       </select>
