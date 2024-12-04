@@ -6,24 +6,39 @@ const App=()=>{
   const [selCountry,setSelCountry]=useState("");
   const [selState,setSelState]=useState("");
   const [selCity,setSelCity]=useState("");
+  const [error,setError]=useState("");
   useEffect(()=>{
     fetch("https://crio-location-selector.onrender.com/countries")
-    .then(res=>res.json())
-    .then(data=>setCountries(data));
+    .then(res=> {
+      if(!res.ok) throw new Error("Failed to fetch countries");
+       return res.json();
+  })
+    .then((data)=>setCountries(data))
+    .catch((err)=>setError(err.message || "Something went wrong"));
   },[]);
   useEffect(()=>{
     if(!selCountry)
-      return
+      return;
+     setError("");
     fetch(`https://crio-location-selector.onrender.com/country=${selCountry}/states`)
-    .then(res=>res.json())
-    .then(data=>setStates(data));
+    .then(res=>{
+      if(!res.ok) throw new Error("Failed to fetch countries");
+       return res.json();
+  })
+    .then((data)=>setStates(data))
+    .catch((err)=>setError(err.message || "Something went wrong"));
   },[selCountry]);
   useEffect(()=>{
     if(!selCountry)
-      return
+      return;
+     setError("")
     fetch(` https://crio-location-selector.onrender.com/country=${selCountry}/state=${selState}/cities`)
-    .then(res=>res.json())
-    .then(data=>setCities(data));
+    .then(res=>{
+      if(!res.ok) throw new Error("Failed to fetch countries");
+       return res.json();
+  })
+    .then((data)=>setCities(data))
+    .catch((err)=>setError(err.message || "Something went wrong"));
   },[selCountry,selState]);
   console.log(selCountry,selState)
   return (
