@@ -29,27 +29,29 @@ const App=()=>{
   return (
     <div>
     <div>
-      <select name="country" id="country" value={selCountry} onChange={(e)=>setSelCountry(e.target.value)}>
+      <select name="country" id="country" value={selCountry} onChange={(e)=>{setSelCountry(e.target.value);setSelState("");setSelCity("");setStates([]);setCities([]);}}>
       <option>Select Country</option>
         {countries.map((country)=>(<option value={country} key={country}>{country}</option>))}
       </select>
-      <select name="country" id="country" value={selState} onChange={(e)=>setSelState(e.target.value)}>
+      <select name="country" id="country" value={selState} onChange={(e)=>{setSelState(e.target.value);setSelCity("");setCities([]);}} disabled={!selCountry}>
         <option>Select State</option>
         {states.map((state)=>(<option value={state} key={state}>{state}</option>))}
       </select>
-      <select name="country" id="country" value={selCity} onChange={(e)=>setSelCity(e.target.value)}>
+      <select name="country" id="country" value={selCity} onChange={(e)=>setSelCity(e.target.value)} disabled={!selState}>
         <option>Select City</option>
         {cities.map((city)=>(<option value={city} key={city}>{city}</option>))}
       </select>
     </div>
      <div style={{marginTop:"20px",fontWeight:"bold"}}>
-    {selCity && selState && selCountry && (
+    {selCity && selState && selCountry ? (
       <p>
         You selected {selCity},{selState},{selCountry}
       </p>
+    ):(
+      <p>please select a location</p>
     )}
     </div>
    </div>
   );
 };
-export default App
+export default App;
